@@ -33,7 +33,7 @@ pipeline {
         stage('Ansible Deployment') {
             steps {
                 script {
-                   sleep '360'
+                   sleep '30'
                     ansiblePlaybook becomeUser: 'ec2-user', credentialsId: 'aws', disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/ans-tform/challenges/inventory.yaml', playbook: '/var/lib/jenkins/workspace/ans-tform/challenges/amazon-playbook.yml', vaultTmpPath: ''
                     ansiblePlaybook become: true, credentialsId: 'aws', disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/ans-tform/challenges/inventory.yaml', playbook: '/var/lib/jenkins/workspace/ans-tform/challenges/ubuntu-playbook.yml', vaultTmpPath: ''
                 }
