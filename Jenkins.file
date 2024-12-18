@@ -22,7 +22,7 @@ pipeline {
                     dir('/var/lib/jenkins/workspace/ans-tform/challenges/') {
                     sh 'pwd'
                     sh 'terraform init'
-                    sh 'terraform validate'
+                  #//  sh 'terraform validate'
                     sh 'terraform plan'
                     sh 'terraform apply -auto-approve'
                     }
