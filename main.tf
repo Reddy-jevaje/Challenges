@@ -1,5 +1,5 @@
 provider "aws" {
-  region     = "us-west-2"  # Specify your AWS region
+  region     = "us-east-1"  # Specify your AWS region
 }
 
 resource "aws_instance" "amazon_linux" {
