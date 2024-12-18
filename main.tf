@@ -3,9 +3,9 @@ provider "aws" {
 }
 
 resource "aws_instance" "amazon_linux" {
-  ami           = "ami-07d9cf938edb0739b"
+  ami           = "ami-01816d07b1128cd2d"
   instance_type = "t2.micro"
-  key_name      = "challenge"
+  key_name      = "jenkins"
    user_data = <<-EOF
               #!/bin/bash
               hostnamectl set-hostname c8.local
@@ -18,9 +18,9 @@ resource "aws_instance" "amazon_linux" {
 }
 
 resource "aws_instance" "ubuntu" {
-  ami           = "ami-05d38da78ce859165"
+  ami           = "ami-0e2c8caa4b6378d8c"
   instance_type = "t2.micro"
-  key_name      = "challenge"
+  key_name      = "jenkins"
   user_data = <<-EOF
               #!/bin/bash
               hostnamectl set-hostname u21.local
