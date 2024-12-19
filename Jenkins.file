@@ -1,31 +1,35 @@
 pipeline {
     agent any
-environment {
+    environment {
         AWS_ACCESS_KEY_ID = credentials('aws') // ID from Jenkins credentials store
         AWS_SECRET_ACCESS_KEY = credentials('aws') // ID from Jenkins credentials store
      }
+
     stages {
+        
+
         stage('Checkout') {
             steps {
                 deleteDir()
                 sh 'echo cloning repo'
-                sh 'git clone https://github.com/Reddy-jevaje/Challenges.git'
+                sh 'git clone https://github.com/Reddy-jevaje/challenges.git' 
             }
         }
+        
         stage('Terraform Apply') {
             steps {
                 script {
                     dir('/var/lib/jenkins/workspace/ans-tform/challenges/') {
                     sh 'pwd'
                     sh 'terraform init'
-                    sh 'terraform validate'
-                    // sh 'terraform destroy -auto-approve'
+                  // sh 'terraform destroy -auto-approve'
                     sh 'terraform plan'
                     sh 'terraform apply -auto-approve'
                     }
                 }
             }
         }
+        
         stage('Ansible Deployment') {
             steps {
                 script {
