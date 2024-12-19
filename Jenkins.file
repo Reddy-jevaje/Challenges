@@ -22,7 +22,7 @@ pipeline {
                     dir('/var/lib/jenkins/workspace/ans-tform/challenges/') {
                     sh 'pwd'
                     sh 'terraform init'
-                  
+                  // sh 'terraform destroy -auto-approve'
                     sh 'terraform plan'
                     sh 'terraform apply -auto-approve'
                     }
@@ -35,7 +35,7 @@ pipeline {
                 script {
                    sleep '300'
                     ansiblePlaybook becomeUser: 'ec2-user', credentialsId: 'amazon-linux', disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/ans-tform/challenges/inventory.yaml', playbook: '/var/lib/jenkins/workspace/ans-tform/challenges/amazon-playbook.yml', vaultTmpPath: ''
-                    ansiblePlaybook become: true, credentialsId: 'ubuntuuser', disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/ans-tform/challenges/inventory.yaml', playbook: '/var/lib/jenkins/workspace/ans-tform/challenges/ubuntu-playbook.yml', vaultTmpPath: ''
+                    ansiblePlaybook become: ubuntu, credentialsId: 'ubuntuuser', disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/ans-tform/challenges/inventory.yaml', playbook: '/var/lib/jenkins/workspace/ans-tform/challenges/ubuntu-playbook.yml', vaultTmpPath: ''
                 }
             }
         }
